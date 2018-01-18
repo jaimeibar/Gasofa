@@ -23,23 +23,23 @@ class MainScreen(GridLayout):
         self.cols = 2
 
         self.add_widget(Label(text='Kms'))
-        self.input_kmtrs = TextInput(multiline=False, input_filter='int')
+        self.input_kmtrs = TextInput(multiline=False, input_filter='int', write_tab=False)
         self.add_widget(self.input_kmtrs)
 
         self.add_widget(Label(text='€/l'))
-        self.input_price = TextInput(multiline=False, input_filter='float')
+        self.input_price = TextInput(multiline=False, input_filter='float', write_tab=False)
         self.add_widget(self.input_price)
 
         self.add_widget(Label(text='l/100'))
-        self.input_avgconsumption = TextInput(multiline=False, input_filter='float')
+        self.input_avgconsumption = TextInput(multiline=False, input_filter='float', write_tab=False)
         self.add_widget(self.input_avgconsumption)
 
         self.add_widget(Label(text='Litres'))
-        self.input_litres = TextInput(multiline=False, input_filter='int', disable=True)
+        self.input_litres = TextInput(multiline=False, input_filter='int', disabled=True, readonly=True, is_focusable=False)
         self.add_widget(self.input_litres)
 
         self.add_widget(Label(text='€'))
-        self.input_euros = TextInput(multiline=False, input='float', disabled=True)
+        self.input_euros = TextInput(multiline=False, input='float', disabled=True, readonly=True, is_focusable=False)
         self.add_widget(self.input_euros)
 
         btn_go = Button(text='Go')
@@ -71,6 +71,7 @@ class MainScreen(GridLayout):
         self.input_price.text = ''
         self.input_avgconsumption.text = ''
         self.input_litres.text = ''
+        self.input_euros.text = ''
 
     def calculate_number_of_litres(self):
         """
