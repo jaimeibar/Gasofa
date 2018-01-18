@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
+
 import kivy
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
@@ -28,7 +30,7 @@ class MainScreen(GridLayout):
         rate = TextInput(multiline=False, input_filter='float')
         self.add_widget(rate)
 
-        self.add_widget(Label(text='Avg Fuel Consumption'))
+        self.add_widget(Label(text='l/100'))
         consumption = TextInput(multiline=False, input_filter='float')
         self.add_widget(consumption)
 
@@ -41,24 +43,22 @@ class MainScreen(GridLayout):
         self.add_widget(fuel)
 
         self.add_widget(Label(text='€'))
-        euros = TextInput(multiline=False, disabled=True)
+        euros = TextInput(multiline=False, input='float', disabled=True)
         self.add_widget(euros)
 
         btn_go = Button(text='Go')
-        btn_go.bind(on_press=on_press_callback)
+        btn_go.bind(on_press=self.on_press_callback)
         self.add_widget(btn_go)
 
         btn_reset = Button(text='Reset')
-        btn_reset.bind(on_press=on_reset_callback)
+        btn_reset.bind(on_press=self.on_reset_callback)
         self.add_widget(btn_reset)
 
+    def on_press_callback(self, value):
+        pass
 
-def on_press_callback(value):
-    pass
-
-def on_reset_callback(value):
-    pass
-
+    def on_reset_callback(self, value):
+        pass
 
 
 class MainApp(App):
