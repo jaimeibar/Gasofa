@@ -23,28 +23,28 @@ class MainScreen(GridLayout):
         self.cols = 2
 
         self.add_widget(Label(text='Kms'))
-        self.kmtrs = TextInput(multiline=False, input_filter='int')
-        self.add_widget(self.kmtrs)
+        self.input_kmtrs = TextInput(multiline=False, input_filter='int')
+        self.add_widget(self.input_kmtrs)
 
         self.add_widget(Label(text='€/l'))
-        self.rate = TextInput(multiline=False, input_filter='float')
-        self.add_widget(self.rate)
+        self.input_rate = TextInput(multiline=False, input_filter='float')
+        self.add_widget(self.input_rate)
 
         self.add_widget(Label(text='l/100'))
-        self.consumption = TextInput(multiline=False, input_filter='float')
-        self.add_widget(self.consumption)
+        self.input_consumption = TextInput(multiline=False, input_filter='float')
+        self.add_widget(self.input_consumption)
 
         self.add_widget(Label(text='Litres'))
-        self.litres = TextInput(multiline=False, input_filter='int', disable=True)
-        self.add_widget(self.litres)
+        self.input_litres = TextInput(multiline=False, input_filter='int', disable=True)
+        self.add_widget(self.input_litres)
 
         self.add_widget(Label(text='Fuel Consumption'))
-        self.fuel = TextInput(multiline=False, input_filter='int')
-        self.add_widget(self.fuel)
+        self.input_fuel = TextInput(multiline=False, input_filter='int')
+        self.add_widget(self.input_fuel)
 
         self.add_widget(Label(text='€'))
-        self.euros = TextInput(multiline=False, input='float', disabled=True)
-        self.add_widget(self.euros)
+        self.input_euros = TextInput(multiline=False, input='float', disabled=True)
+        self.add_widget(self.input_euros)
 
         btn_go = Button(text='Go')
         btn_go.bind(on_press=self.on_press_callback)
@@ -55,8 +55,7 @@ class MainScreen(GridLayout):
         self.add_widget(btn_reset)
 
     def on_press_callback(self, value):
-        print('Foo {0}'.format(self.kmtrs.select_all()))
-        # self.calculate_litres(value)
+        print('Foo {0}'.format(self.kmtrs.text))
 
     def on_reset_callback(self, value):
         pass
