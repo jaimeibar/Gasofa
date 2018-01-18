@@ -23,28 +23,28 @@ class MainScreen(GridLayout):
         self.cols = 2
 
         self.add_widget(Label(text='Kms'))
-        kmtrs = TextInput(multiline=False, input_filter='int')
-        self.add_widget(kmtrs)
+        self.kmtrs = TextInput(multiline=False, input_filter='int')
+        self.add_widget(self.kmtrs)
 
         self.add_widget(Label(text='€/l'))
-        rate = TextInput(multiline=False, input_filter='float')
-        self.add_widget(rate)
+        self.rate = TextInput(multiline=False, input_filter='float')
+        self.add_widget(self.rate)
 
         self.add_widget(Label(text='l/100'))
-        consumption = TextInput(multiline=False, input_filter='float')
-        self.add_widget(consumption)
+        self.consumption = TextInput(multiline=False, input_filter='float')
+        self.add_widget(self.consumption)
 
         self.add_widget(Label(text='Litres'))
-        litres = TextInput(multiline=False, input_filter='int', disable=True)
-        self.add_widget(litres)
+        self.litres = TextInput(multiline=False, input_filter='int', disable=True)
+        self.add_widget(self.litres)
 
         self.add_widget(Label(text='Fuel Consumption'))
-        fuel = TextInput(multiline=False, input_filter='int')
-        self.add_widget(fuel)
+        self.fuel = TextInput(multiline=False, input_filter='int')
+        self.add_widget(self.fuel)
 
         self.add_widget(Label(text='€'))
-        euros = TextInput(multiline=False, input='float', disabled=True)
-        self.add_widget(euros)
+        self.euros = TextInput(multiline=False, input='float', disabled=True)
+        self.add_widget(self.euros)
 
         btn_go = Button(text='Go')
         btn_go.bind(on_press=self.on_press_callback)
@@ -55,11 +55,14 @@ class MainScreen(GridLayout):
         self.add_widget(btn_reset)
 
     def on_press_callback(self, value):
-        pass
+        print('Foo {0}'.format(self.kmtrs.select_all()))
+        # self.calculate_litres(value)
 
     def on_reset_callback(self, value):
         pass
 
+    def calculate_litres(self, **kwargs):
+        pass
 
 class MainApp(App):
 
