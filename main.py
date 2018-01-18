@@ -27,20 +27,16 @@ class MainScreen(GridLayout):
         self.add_widget(self.input_kmtrs)
 
         self.add_widget(Label(text='€/l'))
-        self.input_rate = TextInput(multiline=False, input_filter='float')
-        self.add_widget(self.input_rate)
+        self.input_price = TextInput(multiline=False, input_filter='float')
+        self.add_widget(self.input_price)
 
         self.add_widget(Label(text='l/100'))
-        self.input_consumption = TextInput(multiline=False, input_filter='float')
-        self.add_widget(self.input_consumption)
+        self.input_avgconsumption = TextInput(multiline=False, input_filter='float')
+        self.add_widget(self.input_avgconsumption)
 
         self.add_widget(Label(text='Litres'))
         self.input_litres = TextInput(multiline=False, input_filter='int', disable=True)
         self.add_widget(self.input_litres)
-
-        self.add_widget(Label(text='Fuel Consumption'))
-        self.input_fuel = TextInput(multiline=False, input_filter='int')
-        self.add_widget(self.input_fuel)
 
         self.add_widget(Label(text='€'))
         self.input_euros = TextInput(multiline=False, input='float', disabled=True)
@@ -55,13 +51,44 @@ class MainScreen(GridLayout):
         self.add_widget(btn_reset)
 
     def on_press_callback(self, value):
-        print('Foo {0}'.format(self.kmtrs.text))
+        """
+        Number of litres and total amount in €
+        :param value:
+        :return:
+        """
+        ltrs = self.calculate_number_of_litres()
+        self.input_litres.text = str(ltrs)
+        total = self.calculate_bill(ltrs)
+        self.input_euros.text = str(total)
 
     def on_reset_callback(self, value):
-        pass
+        """
+        Clear all fields.
+        :param value:
+        :return:
+        """
+        self.input_kmtrs.text = ''
+        self.input_price.text = ''
+        self.input_avgconsumption.text = ''
+        self.input_litres.text = ''
 
-    def calculate_litres(self, **kwargs):
-        pass
+    def calculate_number_of_litres(self):
+        """
+        Number of litres.
+        :return: Number of litres
+        """
+        litrs = (float(self.input_kmtrs.text) * float(self.input_avgconsumption.text)) / 100
+        return litrs
+
+    def calculate_bill(self, litrs):
+        """
+        Total amount in €
+        :param litrs: Number of litres
+        :return: Total amount in €
+        """
+        total = float(litrs) * float(self.input_price.text)
+        return total
+
 
 class MainApp(App):
 
