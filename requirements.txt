@@ -1,6 +1,6 @@
 certifi==2017.11.5
 chardet==3.0.4
-Cython==0.27.3
+Cython==0.25
 docutils==0.14
 idna==2.6
 Kivy==git+https://github.com/kivy/kivy.git@master
