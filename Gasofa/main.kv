@@ -1,56 +1,51 @@
 #:kivy 1.10.0
 
+<TextInputBase@TextInput>:
+    multiline: False
+    input_filter: 'float'
+    write_tab: False
+
+
 <GridLayout>:
     cols: 2
     Label:
         id: lblkms
         text: 'Kms'
-    TextInput:
+    TextInputBase:
         id: inputkms
-        multiline: False
-        input_filter: 'float'
-        write_tab: False
     Label:
         id: lblprice
         text: '€/l'
-    TextInput:
+    TextInputBase:
         id: inputprice
-        multiline: False
-        input_filter: 'float'
-        write_tab: False
     Label:
         id: lblavgconsumption
         text: 'l/100'
-    TextInput:
+    TextInputBase:
         id: inputavgconsumption
-        multiline: False
-        input_filter: 'float'
-        write_tab: False
     Label:
         id: lbllitres
         text: 'Litres'
-    TextInput:
+    TextInputBase:
         id: inputlitres
-        multiline: False
-        input_filter: 'float'
         disabled: True
         readonly: True
         is_focusable: False
     Label:
         id: lbleuros
         text: '€'
-    TextInput:
+    TextInputBase:
         id: inputeuros
-        multiline: False
-        input_filter: 'float'
         disabled: True
         readonly: True
         is_focusable: False
     Button:
         id: btngo
         text: 'Go'
+        disabled: True
         on_press: root.on_press_callback(self)
     Button:
         id: btnclear
         text: 'Clear'
+        disabled: True
         on_press: root.on_clear_callback(self)
