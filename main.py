@@ -23,7 +23,7 @@ class MainScreen(GridLayout):
         self.cols = 2
 
         self.add_widget(Label(text='Kms'))
-        self.input_kmtrs = TextInput(multiline=False, input_filter='int', write_tab=False)
+        self.input_kmtrs = TextInput(multiline=False, input_filter='float', write_tab=False)
         self.add_widget(self.input_kmtrs)
 
         self.add_widget(Label(text='€/l'))
