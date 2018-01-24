@@ -5,6 +5,8 @@
     input_filter: 'float'
     write_tab: False
     input_type: 'number'
+    font_size: '35sp'
+    padding: [10, 10, 10, 10]
 
 
 <GridLayout>:
@@ -14,16 +16,19 @@
         text: 'Kms'
     TextInputBase:
         id: inputkms
+        on_text: root.on_text_validate_callback(self, 'inputkms')
     Label:
         id: lblprice
         text: '€/l'
     TextInputBase:
         id: inputprice
+        on_text: root.on_text_validate_callback(self)
     Label:
         id: lblavgconsumption
         text: 'l/100'
     TextInputBase:
         id: inputavgconsumption
+        on_text: root.on_text_validate_callback(self)
     Label:
         id: lbllitres
         text: 'Litres'
