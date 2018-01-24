@@ -39,6 +39,16 @@ class MainScreen(GridLayout):
         self.ids.inputlitres.text = ''
         self.ids.inputeuros.text = ''
 
+    def on_text_validate_callback(self, instance, labelid=''):
+        Logger.info('on text validate on {instance}'.format(instance=instance.id))
+        fields = self.get_fields_list()
+        if all(fields):
+            self.ids.btngo.disabled = False
+            self.ids.btnclear.disabled = False
+        elif any(fields):
+            self.ids.btngo.disabled = True
+            self.ids.btnclear.disabled = True
+
     def calculate_number_of_litres(self):
         """
         Number of litres.
@@ -55,6 +65,15 @@ class MainScreen(GridLayout):
         """
         total = float(litrs) * float(self.ids.inputprice.text)
         return total
+
+    def get_fields_list(self):
+        """
+        Return a list with all input fields available.
+        :return: list of fields available.
+        """
+        fields = [self.ids.inputkms.text, self.ids.inputprice.text,
+                  self.ids.inputavgconsumption.text]
+        return fields
 
 
 class MainApp(App):
