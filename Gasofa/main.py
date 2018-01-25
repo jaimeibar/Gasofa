@@ -15,33 +15,29 @@ __version__ = '0.2'
 
 class MainScreen(GridLayout):
 
-
-    def on_press_callback(self, value):
+    def on_press_callback(self):
         """
         Number of litres and total amount in €
-        :param value:
-        :return:
         """
         ltrs = self.calculate_number_of_litres()
         total = self.calculate_bill(ltrs)
         self.ids.inputlitres.text = str(ltrs)
         self.ids.inputeuros.text = str(total)
 
-    def on_clear_callback(self, value):
+    def on_clear_callback(self):
         """
-        Clear all fields.
-        :param value:
-        :return:
+        Clear all text input fields.
         """
-        self.ids.inputkms.text = ''
-        self.ids.inputprice.text = ''
-        self.ids.inputavgconsumption.text = ''
-        self.ids.inputlitres.text = ''
-        self.ids.inputeuros.text = ''
+        for fd in self.get_all_input_text_fields():
+            fd.text = ''
 
-    def on_text_validate_callback(self, instance, labelid=''):
-        Logger.info('on text validate on {instance}'.format(instance=instance.id))
-        fields = self.get_fields_list()
+    def on_text_validate_callback(self):
+        """
+        Check input text fields and enable/disable them depending on
+        previous status.
+        """
+        Logger.info('on text validate callback')
+        fields = self.get_input_text_fields()
         if all(fields):
             self.ids.btngo.disabled = False
             self.ids.btnclear.disabled = False
@@ -66,14 +62,23 @@ class MainScreen(GridLayout):
         total = float(litrs) * float(self.ids.inputprice.text)
         return total
 
-    def get_fields_list(self):
+    def get_input_text_fields(self):
         """
-        Return a list with all input fields available.
-        :return: list of fields available.
+        Return a list with all writable input text fields available.
+        :return: list of writable input text fields available.
         """
-        fields = [self.ids.inputkms.text, self.ids.inputprice.text,
-                  self.ids.inputavgconsumption.text]
-        return fields
+        inputtext = [self.ids.inputkms, self.ids.inputprice,
+                     self.ids.inputavgconsumption]
+        return inputtext
+
+    def get_all_input_text_fields(self):
+        """
+        Builds a list containing all input text fields.
+        :return: List containing all input text fields.
+        """
+        fids = [self.ids.inputlitres, self.ids.inputeuros]
+        fids.extend(self.get_input_text_fields())
+        return fids
 
 
 class MainApp(App):
