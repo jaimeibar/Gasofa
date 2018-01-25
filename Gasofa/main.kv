@@ -16,19 +16,19 @@
         text: 'Kms'
     TextInputBase:
         id: inputkms
-        on_text: root.on_text_validate_callback(self, 'inputkms')
+        on_text: root.on_text_validate_callback()
     Label:
         id: lblprice
         text: '€/l'
     TextInputBase:
         id: inputprice
-        on_text: root.on_text_validate_callback(self)
+        on_text: root.on_text_validate_callback()
     Label:
         id: lblavgconsumption
         text: 'l/100'
     TextInputBase:
         id: inputavgconsumption
-        on_text: root.on_text_validate_callback(self)
+        on_text: root.on_text_validate_callback()
     Label:
         id: lbllitres
         text: 'Litres'
@@ -49,9 +49,9 @@
         id: btngo
         text: 'Go'
         disabled: True
-        on_press: root.on_press_callback(self)
+        on_press: root.on_press_callback()
     Button:
         id: btnclear
         text: 'Clear'
         disabled: True
-        on_press: root.on_clear_callback(self)
+        on_press: root.on_clear_callback()
