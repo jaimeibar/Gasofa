@@ -10,7 +10,7 @@ from kivy.logger import Logger
 
 kivy.require('1.10.0')  # replace with your current kivy version!
 
-__version__ = '0.2'
+__version__ = '0.3'
 
 
 class MainScreen(GridLayout):
@@ -28,8 +28,8 @@ class MainScreen(GridLayout):
         """
         Clear all text input fields.
         """
-        for fd in self.get_all_input_text_fields():
-            fd.text = ''
+        for ifd in self.get_all_input_text_fields():
+            ifd.text = ''
 
     def on_text_validate_callback(self):
         """
