@@ -10,7 +10,7 @@ from kivy.logger import Logger
 
 kivy.require('1.10.0')  # replace with your current kivy version!
 
-__version__ = '0.3'
+__version__ = '0.3.1'
 
 
 class MainScreen(GridLayout):
@@ -30,18 +30,19 @@ class MainScreen(GridLayout):
         """
         for ifd in self.get_all_input_text_fields():
             ifd.text = ''
+        self.on_focus_callback()
 
-    def on_text_validate_callback(self):
+    def on_focus_callback(self):
         """
-        Check input text fields and enable/disable them depending on
-        previous status.
+        Check input text fields and enable/disable the buttons
+        depending on input text fields content.
         """
-        Logger.info('on text validate callback')
         fields = self.get_input_text_fields()
-        if all(fields):
+        ftext = [f.text for f in fields]
+        if all(ftext):
             self.ids.btngo.disabled = False
             self.ids.btnclear.disabled = False
-        elif any(fields):
+        else:
             self.ids.btngo.disabled = True
             self.ids.btnclear.disabled = True
 
