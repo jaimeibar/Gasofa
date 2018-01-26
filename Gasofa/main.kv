@@ -16,19 +16,19 @@
         text: 'Kms'
     TextInputBase:
         id: inputkms
-        on_text: root.on_text_validate_callback()
+        on_focus: root.on_focus_callback()
     Label:
         id: lblprice
         text: '€/l'
     TextInputBase:
         id: inputprice
-        on_text: root.on_text_validate_callback()
+        on_focus: root.on_focus_callback()
     Label:
         id: lblavgconsumption
         text: 'l/100'
     TextInputBase:
         id: inputavgconsumption
-        on_text: root.on_text_validate_callback()
+        on_focus: root.on_focus_callback()
     Label:
         id: lbllitres
         text: 'Litres'
