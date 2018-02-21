@@ -10,7 +10,7 @@ from kivy.logger import Logger
 
 kivy.require('1.10.0')  # replace with your current kivy version!
 
-__version__ = '0.3.1'
+__version__ = '0.3.2'
 
 
 class MainScreen(GridLayout):
