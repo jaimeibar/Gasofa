@@ -6,5 +6,4 @@ idna==2.6
 Kivy==git+https://github.com/kivy/kivy.git@master
 Kivy-Garden==0.1.4
 Pygments==2.2.0
-requests==2.20.0
 urllib3==1.22
