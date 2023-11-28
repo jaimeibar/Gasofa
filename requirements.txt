@@ -1,4 +1,4 @@
-certifi==2017.11.5
+certifi==2023.7.22
 chardet==3.0.4
 Cython==0.25
 docutils==0.14
