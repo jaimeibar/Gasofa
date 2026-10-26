@@ -3,6 +3,6 @@ chardet==3.0.4
 Cython==0.25
 docutils==0.14
 idna==2.6
-Kivy==git+https://github.com/kivy/kivy.git@master
+Kivy==2.3.1
 Kivy-Garden==0.1.4
 Pygments==2.15.0
